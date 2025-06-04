@@ -13,13 +13,20 @@ class PhoneScreen extends StatefulWidget {
 class _PhoneScreenState extends State<PhoneScreen> {
   final TextEditingController _phoneController = TextEditingController();
 
-  _onContinue() async {
+  _onContinue(BuildContext context) async {
     final phone = _phoneController.text;
     final api = Provider.of<ApiProvider>(context, listen: false).api;
     await api.getAuthApi().authControllerRequestOtp(
       requestOtpRequestDto: RequestOtpRequestDto(phone: phone),
     );
+    if (!context.mounted) return;
     Navigator.pushReplacementNamed(context, '/otp', arguments: phone);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _phoneController.clear();
   }
 
   @override
@@ -58,7 +65,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                       foregroundColor: Colors.white,
                     ),
                     onPressed: () {
-                      _onContinue();
+                      _onContinue(context);
                     },
                     child: const Text(
                       'Tiếp tục',

@@ -7,8 +7,18 @@ void main() {
   final instance = Openapi().getAuthApi();
 
   group(AuthApi, () {
+    //Future<Driver> authControllerGetMe() async
+    test('test authControllerGetMe', () async {
+      // TODO
+    });
+
     //Future<LoginResponseDto> authControllerLogin(LoginRequestDto loginRequestDto) async
     test('test authControllerLogin', () async {
+      // TODO
+    });
+
+    //Future authControllerLogout() async
+    test('test authControllerLogout', () async {
       // TODO
     });
 

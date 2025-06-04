@@ -54,7 +54,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **driversControllerUpdateDriverStatus**
-> Object driversControllerUpdateDriverStatus(body)
+> Driver driversControllerUpdateDriverStatus(updateStatusDto)
 
 
 
@@ -63,10 +63,10 @@ void (empty response body)
 import 'package:openapi/api.dart';
 
 final api = Openapi().getDriversApi();
-final String body = body_example; // String | 
+final UpdateStatusDto updateStatusDto = ; // UpdateStatusDto | 
 
 try {
-    final response = api.driversControllerUpdateDriverStatus(body);
+    final response = api.driversControllerUpdateDriverStatus(updateStatusDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling DriversApi->driversControllerUpdateDriverStatus: $e\n');
@@ -77,11 +77,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**|  | 
+ **updateStatusDto** | [**UpdateStatusDto**](UpdateStatusDto.md)|  | 
 
 ### Return type
 
-**Object**
+[**Driver**](Driver.md)
 
 ### Authorization
 

@@ -9,7 +9,9 @@ import 'dart:convert';
 import 'package:openapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
+import 'package:openapi/src/model/driver.dart';
 import 'package:openapi/src/model/location.dart';
+import 'package:openapi/src/model/update_status_dto.dart';
 
 class DriversApi {
 
@@ -92,7 +94,7 @@ _bodyData=jsonEncode(location);
   /// 
   ///
   /// Parameters:
-  /// * [body] 
+  /// * [updateStatusDto] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -100,10 +102,10 @@ _bodyData=jsonEncode(location);
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Object] as data
+  /// Returns a [Future] containing a [Response] with a [Driver] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Object>> driversControllerUpdateDriverStatus({ 
-    required String body,
+  Future<Response<Driver>> driversControllerUpdateDriverStatus({ 
+    required UpdateStatusDto updateStatusDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -134,7 +136,7 @@ _bodyData=jsonEncode(location);
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(body);
+_bodyData=jsonEncode(updateStatusDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -156,11 +158,11 @@ _bodyData=jsonEncode(body);
       onReceiveProgress: onReceiveProgress,
     );
 
-    Object? _responseData;
+    Driver? _responseData;
 
     try {
 final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Object, Object>(rawData, 'Object', growable: true);
+_responseData = rawData == null ? null : deserialize<Driver, Driver>(rawData, 'Driver', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -171,7 +173,7 @@ _responseData = rawData == null ? null : deserialize<Object, Object>(rawData, 'O
       );
     }
 
-    return Response<Object>(
+    return Response<Driver>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

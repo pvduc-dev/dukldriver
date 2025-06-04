@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**tripsControllerAcceptTrip**](TripsApi.md#tripscontrolleraccepttrip) | **POST** /driver/trips/{id}/accept | 
+[**tripsControllerArriveTrip**](TripsApi.md#tripscontrollerarrivetrip) | **POST** /driver/trips/{id}/arrive | 
 [**tripsControllerCancelTrip**](TripsApi.md#tripscontrollercanceltrip) | **POST** /driver/trips/{id}/cancel | 
 [**tripsControllerCompleteTrip**](TripsApi.md#tripscontrollercompletetrip) | **POST** /driver/trips/{id}/complete | 
 [**tripsControllerGetTrip**](TripsApi.md#tripscontrollergettrip) | **GET** /driver/trips/{id} | 
@@ -34,6 +35,47 @@ try {
     print(response);
 } catch on DioException (e) {
     print('Exception when calling TripsApi->tripsControllerAcceptTrip: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+[**Trip**](Trip.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tripsControllerArriveTrip**
+> Trip tripsControllerArriveTrip(id)
+
+
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+
+final api = Openapi().getTripsApi();
+final String id = id_example; // String | 
+
+try {
+    final response = api.tripsControllerArriveTrip(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TripsApi->tripsControllerArriveTrip: $e\n');
 }
 ```
 
@@ -172,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -213,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

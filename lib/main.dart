@@ -4,7 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:dukldriver/api/lib/openapi.dart';
 import 'package:dukldriver/provider/api_provider.dart';
 import 'package:dukldriver/provider/auth_provider.dart';
+import 'package:dukldriver/screens/detail_trip_screen.dart';
+import 'package:dukldriver/screens/incoming_trip_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flashy_flushbar/flashy_flushbar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:geolocator/geolocator.dart';
@@ -24,7 +27,7 @@ Future<void> requestLocationPermission() async {
   var status = await Permission.location.request();
   if (status.isDenied) {
     // Mở màn hình cài đặt để người dùng có thể cấp quyền vị trí
-    await openAppSettings();
+    await Geolocator.openLocationSettings();
     return;
   }
   if (await Permission.locationAlways.request().isGranted) {
@@ -39,7 +42,7 @@ Future<void> requestLocationPermission() async {
   }
 }
 
-Future<void> initializeService() async {
+Future<void> initializeLocationService() async {
   final service = FlutterBackgroundService();
   await service.configure(
     androidConfiguration: AndroidConfiguration(
@@ -113,7 +116,7 @@ void main() async {
 
   await requestLocationPermission();
 
-  await initializeService();
+  await initializeLocationService();
 
   runApp(MyApp());
 }
@@ -126,7 +129,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider(create: (context) => ApiProvider()),
-        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => AuthProvider(context)),
       ],
       child: MaterialApp(
         title: 'Dukl Driver',
@@ -136,7 +139,6 @@ class MyApp extends StatelessWidget {
         ),
         home: Builder(
           builder: (context) {
-            FCMService().initialize(context);
             return Consumer<AuthProvider>(
               builder: (context, authProvider, child) => authProvider.isLoggedIn
                   ? const MainScreen()
@@ -144,14 +146,44 @@ class MyApp extends StatelessWidget {
             );
           },
         ),
+        builder: FlashyFlushbarProvider.init(),
         debugShowCheckedModeBanner: false,
         routes: {
-          '/home': (context) => const HomeScreen(),
-          '/earnings': (context) => const EarningsScreen(),
-          '/notification': (context) => const NotificationScreen(),
-          '/account': (context) => const AccountScreen(),
+          '/home': (context) => Consumer<AuthProvider>(
+            builder: (context, authProvider, child) => authProvider.isLoggedIn
+                ? const HomeScreen()
+                : const PhoneScreen(),
+          ),
+          '/earnings': (context) => Consumer<AuthProvider>(
+            builder: (context, authProvider, child) => authProvider.isLoggedIn
+                ? const EarningsScreen()
+                : const PhoneScreen(),
+          ),
+          '/notification': (context) => Consumer<AuthProvider>(
+            builder: (context, authProvider, child) => authProvider.isLoggedIn
+                ? const NotificationScreen()
+                : const PhoneScreen(),
+          ),
+          '/account': (context) => Consumer<AuthProvider>(
+            builder: (context, authProvider, child) => authProvider.isLoggedIn
+                ? const AccountScreen()
+                : const PhoneScreen(),
+          ),
           '/phone': (context) => const PhoneScreen(),
           '/otp': (context) => const OtpScreen(),
+        },
+        onGenerateRoute: (settings) {
+          if (settings.name != null && settings.name!.startsWith('/trip/')) {
+            final uri = Uri.parse(settings.name!);
+            final tripId = uri.pathSegments.length > 1
+                ? uri.pathSegments[1]
+                : null;
+            return MaterialPageRoute(
+              builder: (context) => DetailTripScreen(tripId: tripId!),
+              settings: settings,
+            );
+          }
+          return null;
         },
       ),
     );
@@ -171,6 +203,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
+    FCMService().initialize(context);
   }
 
   @override

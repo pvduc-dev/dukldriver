@@ -20,13 +20,15 @@ class Trip {
   /// Returns a new [Trip] instance.
   Trip({
 
+     this.id,
+
      this.customerId,
 
      this.driverId,
 
-     this.fromAddress,
+     this.pickup,
 
-     this.toAddress,
+     this.dropoff,
 
      this.startedAt,
 
@@ -40,6 +42,18 @@ class Trip {
 
      this.path,
   });
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? id;
+
+
 
   @JsonKey(
     
@@ -67,25 +81,25 @@ class Trip {
 
   @JsonKey(
     
-    name: r'fromAddress',
+    name: r'pickup',
     required: false,
     includeIfNull: false,
   )
 
 
-  final Address? fromAddress;
+  final Address? pickup;
 
 
 
   @JsonKey(
     
-    name: r'toAddress',
+    name: r'dropoff',
     required: false,
     includeIfNull: false,
   )
 
 
-  final Address? toAddress;
+  final Address? dropoff;
 
 
 
@@ -165,10 +179,11 @@ class Trip {
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is Trip &&
+      other.id == id &&
       other.customerId == customerId &&
       other.driverId == driverId &&
-      other.fromAddress == fromAddress &&
-      other.toAddress == toAddress &&
+      other.pickup == pickup &&
+      other.dropoff == dropoff &&
       other.startedAt == startedAt &&
       other.completedAt == completedAt &&
       other.note == note &&
@@ -178,10 +193,11 @@ class Trip {
 
     @override
     int get hashCode =>
+        id.hashCode +
         customerId.hashCode +
         driverId.hashCode +
-        fromAddress.hashCode +
-        toAddress.hashCode +
+        pickup.hashCode +
+        dropoff.hashCode +
         startedAt.hashCode +
         completedAt.hashCode +
         note.hashCode +

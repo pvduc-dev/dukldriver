@@ -19,34 +19,34 @@ class Address {
   /// Returns a new [Address] instance.
   Address({
 
-     this.longName,
+     this.description,
 
-     this.shortName,
+     this.name,
 
      this.location,
   });
 
   @JsonKey(
     
-    name: r'longName',
+    name: r'description',
     required: false,
     includeIfNull: false,
   )
 
 
-  final String? longName;
+  final String? description;
 
 
 
   @JsonKey(
     
-    name: r'shortName',
+    name: r'name',
     required: false,
     includeIfNull: false,
   )
 
 
-  final String? shortName;
+  final String? name;
 
 
 
@@ -66,14 +66,14 @@ class Address {
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is Address &&
-      other.longName == longName &&
-      other.shortName == shortName &&
+      other.description == description &&
+      other.name == name &&
       other.location == location;
 
     @override
     int get hashCode =>
-        longName.hashCode +
-        shortName.hashCode +
+        description.hashCode +
+        name.hashCode +
         location.hashCode;
 
   factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);

@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the entity
 
   group(Trip, () {
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
     // String customerId
     test('to test the property `customerId`', () async {
       // TODO
@@ -17,13 +22,13 @@ void main() {
       // TODO
     });
 
-    // Address fromAddress
-    test('to test the property `fromAddress`', () async {
+    // Address pickup
+    test('to test the property `pickup`', () async {
       // TODO
     });
 
-    // Address toAddress
-    test('to test the property `toAddress`', () async {
+    // Address dropoff
+    test('to test the property `dropoff`', () async {
       // TODO
     });
 

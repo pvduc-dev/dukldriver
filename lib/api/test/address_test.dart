@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(Address, () {
-    // String longName
-    test('to test the property `longName`', () async {
+    // String description
+    test('to test the property `description`', () async {
       // TODO
     });
 
-    // String shortName
-    test('to test the property `shortName`', () async {
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

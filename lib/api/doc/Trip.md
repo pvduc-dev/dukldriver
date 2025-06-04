@@ -8,10 +8,11 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** |  | [optional] 
 **customerId** | **String** |  | [optional] 
 **driverId** | **String** |  | [optional] 
-**fromAddress** | [**Address**](Address.md) |  | [optional] 
-**toAddress** | [**Address**](Address.md) |  | [optional] 
+**pickup** | [**Address**](Address.md) |  | [optional] 
+**dropoff** | [**Address**](Address.md) |  | [optional] 
 **startedAt** | [**DateTime**](DateTime.md) |  | [optional] 
 **completedAt** | [**DateTime**](DateTime.md) |  | [optional] 
 **note** | **String** |  | [optional] 

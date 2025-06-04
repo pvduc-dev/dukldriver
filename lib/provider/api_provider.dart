@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dukldriver/api/lib/openapi.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:dukldriver/utils/dialog_util.dart';
+import 'package:flutter/material.dart';
 
 class ApiProvider {
   late final Openapi _api;
@@ -19,13 +20,57 @@ class ApiProvider {
   ApiProvider() {
     _dio.interceptors.add(
       InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          final prefs = await SharedPreferences.getInstance();
-          final token = prefs.getString('auth_token');
-          if (token != null) {
-            options.headers['Authorization'] = 'Bearer $token';
+        onRequest:
+            (RequestOptions options, RequestInterceptorHandler handler) async {
+              final context = options.extra['context'];
+              if (context is BuildContext) {
+                if (options.extra['isLoading'] == true) {
+                  DialogUtil.showLoadingDialog(context);
+                }
+              }
+              handler.next(options);
+            },
+        onResponse: (Response response, ResponseInterceptorHandler handler) {
+          final context = response.requestOptions.extra['context'];
+          if (context is BuildContext) {
+            if (response.requestOptions.extra['isLoading'] == true) {
+              Navigator.pop(context);
+            }
           }
-          return handler.next(options);
+          handler.next(response);
+        },
+        onError: (DioException error, ErrorInterceptorHandler handler) {
+          final context = error.requestOptions.extra['context'];
+          if (context is BuildContext) {
+            if (error.requestOptions.extra['isLoading'] == true) {
+              Navigator.pop(context);
+            }
+
+            String errorMessage = '';
+            switch (error.type) {
+              case DioExceptionType.connectionTimeout:
+                errorMessage = 'Kết nối mạng không ổn định, vui lòng thử lại';
+                break;
+              case DioExceptionType.sendTimeout:
+                errorMessage = 'Kết nối mạng không ổn định, vui lòng thử lại';
+                break;
+              case DioExceptionType.receiveTimeout:
+                errorMessage = 'Kết nối mạng không ổn định, vui lòng thử lại';
+                break;
+              case DioExceptionType.connectionError:
+                errorMessage = 'Không thể kết nối đến máy chủ';
+                break;
+              case DioExceptionType.badResponse:
+                errorMessage =
+                    error.response?.data['message'] ?? 'Lỗi không xác định';
+                break;
+              default:
+                errorMessage = 'Đã xảy ra lỗi, vui lòng thử lại sau';
+            }
+
+            DialogUtil.showErrorDialog(context, errorMessage);
+          }
+          handler.next(error);
         },
       ),
     );

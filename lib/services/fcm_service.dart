@@ -1,10 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:dukldriver/api/lib/openapi.dart';
-import 'package:dukldriver/screens/ride_detail_screen.dart';
+import 'package:dukldriver/provider/api_provider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
 class FCMService {
   static final FCMService _instance = FCMService._internal();
@@ -57,65 +56,43 @@ class FCMService {
       // Lấy FCM token lần đầu và cập nhật lên server
       String? token = await _firebaseMessaging.getToken();
       if (token != null) {
-        final prefs = await SharedPreferences.getInstance();
-        final authToken = prefs.getString('auth_token');
-        if (authToken != null) {
-          Openapi(
-            dio: Dio(
-              BaseOptions(
-                headers: {'Authorization': 'Bearer $authToken'},
-                baseUrl: String.fromEnvironment(
-                  'API_URL',
-                  defaultValue: 'http://192.168.31.98:3111',
+        if (context.mounted) {
+          context
+              .read<ApiProvider>()
+              .api
+              .getAuthApi()
+              .authControllerUpsertDeviceToken(
+                updateDeviceTokenRequestDto: UpdateDeviceTokenRequestDto(
+                  token: token,
                 ),
-              ),
-            ),
-          ).getAuthApi().authControllerUpsertDeviceToken(
-            updateDeviceTokenRequestDto: UpdateDeviceTokenRequestDto(
-              token: token,
-            ),
-          );
+              );
         }
       }
 
       // Lắng nghe sự thay đổi của FCM token
       _firebaseMessaging.onTokenRefresh.listen((String token) async {
-        final prefs = await SharedPreferences.getInstance();
-        final authToken = prefs.getString('auth_token');
-        if (authToken != null) {
-          Openapi(
-            dio: Dio(
-              BaseOptions(
-                headers: {'Authorization': 'Bearer $authToken'},
-                baseUrl: String.fromEnvironment(
-                  'API_URL',
-                  defaultValue: 'http://192.168.31.98:3111',
+        if (context.mounted) {
+          context
+              .read<ApiProvider>()
+              .api
+              .getAuthApi()
+              .authControllerUpsertDeviceToken(
+                updateDeviceTokenRequestDto: UpdateDeviceTokenRequestDto(
+                  token: token,
                 ),
-              ),
-            ),
-          ).getAuthApi().authControllerUpsertDeviceToken(
-            updateDeviceTokenRequestDto: UpdateDeviceTokenRequestDto(
-              token: token,
-            ),
-          );
+              );
         }
       });
 
       // Xử lý thông báo khi app đang mở
-      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-        print('Got a message whilst in the foreground!');
-        print('Message data: ${message.data}');
-
+      FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
         if (message.notification != null) {
-          print(
-            'Message also contained a notification: ${message.notification}',
-          );
-          // _showNotification(message);
-          showDialog(
-            context: context,
-            builder: (context) =>
-                Dialog.fullscreen(child: RideDetailScreen(rideId: "123")),
-          );
+          // _showNotification(message)
+          if (context.mounted) {
+            if (message.data['type'] == 'trip') {
+              Navigator.pushNamed(context, '/trip/${message.data['tripId']}');
+            }
+          }
         }
       });
 
@@ -125,8 +102,9 @@ class FCMService {
       );
 
       // Xử lý khi người dùng click vào thông báo
-      FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-        print('Message clicked: ${message.data}');
+      FirebaseMessaging.onMessageOpenedApp.listen((
+        RemoteMessage message,
+      ) async {
         // TODO: Xử lý navigation dựa trên data của message
       });
 
@@ -193,6 +171,5 @@ class FCMService {
 // Xử lý thông báo khi app đang ở background
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print('Handling a background message: ${message.messageId}');
   // TODO: Xử lý thông báo khi app đang ở background
 }

@@ -46,6 +46,9 @@ dependencies:
     path: ./lib/api
   provider: ^6.1.4
   shared_preferences: ^2.5.3
+  url_launcher: ^6.3.1
+  intl: ^0.20.2
+  flashy_flushbar: ^1.4.0
 
 dev_dependencies:
   flutter_test:

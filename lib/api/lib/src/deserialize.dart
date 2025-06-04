@@ -1,4 +1,5 @@
 import 'package:openapi/src/model/address.dart';
+import 'package:openapi/src/model/driver.dart';
 import 'package:openapi/src/model/location.dart';
 import 'package:openapi/src/model/login_request_dto.dart';
 import 'package:openapi/src/model/login_response_dto.dart';
@@ -7,6 +8,7 @@ import 'package:openapi/src/model/request_otp_request_dto.dart';
 import 'package:openapi/src/model/request_otp_response_dto.dart';
 import 'package:openapi/src/model/trip.dart';
 import 'package:openapi/src/model/update_device_token_request_dto.dart';
+import 'package:openapi/src/model/update_status_dto.dart';
 
 final _regList = RegExp(r'^List<(.*)>$');
 final _regSet = RegExp(r'^Set<(.*)>$');
@@ -28,6 +30,8 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return (value is double ? value : double.parse('$value')) as ReturnType;
         case 'Address':
           return Address.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Driver':
+          return Driver.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'Location':
           return Location.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'LoginRequestDto':
@@ -44,6 +48,8 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return Trip.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'UpdateDeviceTokenRequestDto':
           return UpdateDeviceTokenRequestDto.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UpdateStatusDto':
+          return UpdateStatusDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         default:
           RegExpMatch? match;
 

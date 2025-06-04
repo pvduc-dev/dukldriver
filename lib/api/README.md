@@ -49,13 +49,12 @@ import 'package:openapi/openapi.dart';
 
 
 final api = Openapi().getAuthApi();
-final LoginRequestDto loginRequestDto = ; // LoginRequestDto | 
 
 try {
-    final response = await api.authControllerLogin(loginRequestDto);
+    final response = await api.authControllerGetMe();
     print(response);
 } catch on DioException (e) {
-    print("Exception when calling AuthApi->authControllerLogin: $e\n");
+    print("Exception when calling AuthApi->authControllerGetMe: $e\n");
 }
 
 ```
@@ -66,6 +65,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+[*AuthApi*](doc/AuthApi.md) | [**authControllerGetMe**](doc/AuthApi.md#authcontrollergetme) | **GET** /driver/auth/me | 
 [*AuthApi*](doc/AuthApi.md) | [**authControllerLogin**](doc/AuthApi.md#authcontrollerlogin) | **POST** /driver/auth/login | 
 [*AuthApi*](doc/AuthApi.md) | [**authControllerLogout**](doc/AuthApi.md#authcontrollerlogout) | **POST** /driver/auth/logout | 
 [*AuthApi*](doc/AuthApi.md) | [**authControllerRequestOtp**](doc/AuthApi.md#authcontrollerrequestotp) | **POST** /driver/auth/otp | 
@@ -73,6 +73,7 @@ Class | Method | HTTP request | Description
 [*DriversApi*](doc/DriversApi.md) | [**driversControllerUpdateDriverLocation**](doc/DriversApi.md#driverscontrollerupdatedriverlocation) | **PUT** /driver/drivers/location | 
 [*DriversApi*](doc/DriversApi.md) | [**driversControllerUpdateDriverStatus**](doc/DriversApi.md#driverscontrollerupdatedriverstatus) | **PUT** /driver/drivers/status | 
 [*TripsApi*](doc/TripsApi.md) | [**tripsControllerAcceptTrip**](doc/TripsApi.md#tripscontrolleraccepttrip) | **POST** /driver/trips/{id}/accept | 
+[*TripsApi*](doc/TripsApi.md) | [**tripsControllerArriveTrip**](doc/TripsApi.md#tripscontrollerarrivetrip) | **POST** /driver/trips/{id}/arrive | 
 [*TripsApi*](doc/TripsApi.md) | [**tripsControllerCancelTrip**](doc/TripsApi.md#tripscontrollercanceltrip) | **POST** /driver/trips/{id}/cancel | 
 [*TripsApi*](doc/TripsApi.md) | [**tripsControllerCompleteTrip**](doc/TripsApi.md#tripscontrollercompletetrip) | **POST** /driver/trips/{id}/complete | 
 [*TripsApi*](doc/TripsApi.md) | [**tripsControllerGetTrip**](doc/TripsApi.md#tripscontrollergettrip) | **GET** /driver/trips/{id} | 
@@ -83,6 +84,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Address](doc/Address.md)
+ - [Driver](doc/Driver.md)
  - [Location](doc/Location.md)
  - [LoginRequestDto](doc/LoginRequestDto.md)
  - [LoginResponseDto](doc/LoginResponseDto.md)
@@ -91,6 +93,7 @@ Class | Method | HTTP request | Description
  - [RequestOtpResponseDto](doc/RequestOtpResponseDto.md)
  - [Trip](doc/Trip.md)
  - [UpdateDeviceTokenRequestDto](doc/UpdateDeviceTokenRequestDto.md)
+ - [UpdateStatusDto](doc/UpdateStatusDto.md)
 
 
 ## Documentation For Authorization

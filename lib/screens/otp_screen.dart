@@ -17,7 +17,7 @@ class _OtpScreenState extends State<OtpScreen> {
     final otpCode = _otpController.text;
     await context.read<AuthProvider>().login(phone, otpCode);
 
-    if (mounted) {
+    if (context.mounted) {
       Navigator.pushReplacementNamed(context, '/');
     }
   }
@@ -25,6 +25,7 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   void initState() {
     super.initState();
+    _otpController.clear();
   }
 
   @override
