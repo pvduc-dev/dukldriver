@@ -42,7 +42,7 @@ class DriversApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/drivers/location';
+    final _path = r'/drivers/location';
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -113,7 +113,7 @@ _bodyData=jsonEncode(location);
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/drivers/status';
+    final _path = r'/drivers/status';
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{

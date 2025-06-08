@@ -14,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool _isAvailable = false;
 
+  Trip? currentTrip;
+
   @override
   void initState() {
     super.initState();
@@ -40,38 +42,81 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(title: const Text('Trang chủ'), centerTitle: true),
       backgroundColor: Colors.grey.shade100,
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                _isAvailable ? 'Đang sẵn sàng' : 'Không sẵn sàng',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: _isAvailable ? Colors.green : Colors.red,
+        child: Stack(
+          children: [
+            if (currentTrip != null)
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  margin: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 1,
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Chuyến xe hiện tại',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Bạn đang có một chuyến xe',
+                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 20),
-              Switch(
-                value: _isAvailable,
-                onChanged: (value) {
-                  _updateStatus(value);
-                },
-                activeColor: Colors.green,
-                activeTrackColor: Colors.green.withOpacity(0.5),
-                inactiveThumbColor: Colors.red,
-                inactiveTrackColor: Colors.red.withOpacity(0.5),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    _isAvailable ? 'Đang sẵn sàng' : 'Không sẵn sàng',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: _isAvailable ? Colors.green : Colors.red,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Switch(
+                    value: _isAvailable,
+                    onChanged: (value) {
+                      _updateStatus(value);
+                    },
+                    activeColor: Colors.green,
+                    activeTrackColor: Colors.green.withOpacity(0.5),
+                    inactiveThumbColor: Colors.red,
+                    inactiveTrackColor: Colors.red.withOpacity(0.5),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    _isAvailable
+                        ? 'Bạn đang sẵn sàng nhận thông báo về chuyến xe mới'
+                        : 'Bật để bắt đầu nhận thông báo về chuyến xe mới',
+                    style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                  ),
+                ],
               ),
-              const SizedBox(height: 20),
-              Text(
-                _isAvailable
-                    ? 'Bạn đang sẵn sàng nhận thông báo về chuyến xe mới'
-                    : 'Bật để bắt đầu nhận thông báo về chuyến xe mới',
-                style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

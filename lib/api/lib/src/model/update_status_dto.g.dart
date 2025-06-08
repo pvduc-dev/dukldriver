@@ -7,22 +7,13 @@ part of 'update_status_dto.dart';
 // **************************************************************************
 
 UpdateStatusDto _$UpdateStatusDtoFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'UpdateStatusDto',
-      json,
-      ($checkedConvert) {
-        $checkKeys(
-          json,
-          requiredKeys: const ['isAvailable'],
-        );
-        final val = UpdateStatusDto(
-          isAvailable: $checkedConvert('isAvailable', (v) => v as bool),
-        );
-        return val;
-      },
-    );
+    $checkedCreate('UpdateStatusDto', json, ($checkedConvert) {
+      $checkKeys(json, requiredKeys: const ['isAvailable']);
+      final val = UpdateStatusDto(
+        isAvailable: $checkedConvert('isAvailable', (v) => v as bool),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$UpdateStatusDtoToJson(UpdateStatusDto instance) =>
-    <String, dynamic>{
-      'isAvailable': instance.isAvailable,
-    };
+    <String, dynamic>{'isAvailable': instance.isAvailable};

@@ -43,7 +43,7 @@ class AuthApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/auth/me';
+    final _path = r'/auth/me';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -120,7 +120,7 @@ _responseData = rawData == null ? null : deserialize<Driver, Driver>(rawData, 'D
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/auth/login';
+    final _path = r'/auth/login';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -207,7 +207,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseDto, LoginResp
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/auth/logout';
+    final _path = r'/auth/logout';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -260,7 +260,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseDto, LoginResp
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/auth/otp';
+    final _path = r'/auth/otp';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -349,7 +349,7 @@ _responseData = rawData == null ? null : deserialize<RequestOtpResponseDto, Requ
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/auth/device-token';
+    final _path = r'/auth/device-token';
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{

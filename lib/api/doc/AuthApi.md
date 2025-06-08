@@ -9,11 +9,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**authControllerGetMe**](AuthApi.md#authcontrollergetme) | **GET** /driver/auth/me | 
-[**authControllerLogin**](AuthApi.md#authcontrollerlogin) | **POST** /driver/auth/login | 
-[**authControllerLogout**](AuthApi.md#authcontrollerlogout) | **POST** /driver/auth/logout | 
-[**authControllerRequestOtp**](AuthApi.md#authcontrollerrequestotp) | **POST** /driver/auth/otp | 
-[**authControllerUpsertDeviceToken**](AuthApi.md#authcontrollerupsertdevicetoken) | **PUT** /driver/auth/device-token | 
+[**authControllerGetMe**](AuthApi.md#authcontrollergetme) | **GET** /auth/me | 
+[**authControllerLogin**](AuthApi.md#authcontrollerlogin) | **POST** /auth/login | 
+[**authControllerLogout**](AuthApi.md#authcontrollerlogout) | **POST** /auth/logout | 
+[**authControllerRequestOtp**](AuthApi.md#authcontrollerrequestotp) | **POST** /auth/otp | 
+[**authControllerUpsertDeviceToken**](AuthApi.md#authcontrollerupsertdevicetoken) | **PUT** /auth/device-token | 
 
 
 # **authControllerGetMe**

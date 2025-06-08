@@ -9,13 +9,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**tripsControllerAcceptTrip**](TripsApi.md#tripscontrolleraccepttrip) | **POST** /driver/trips/{id}/accept | 
-[**tripsControllerArriveTrip**](TripsApi.md#tripscontrollerarrivetrip) | **POST** /driver/trips/{id}/arrive | 
-[**tripsControllerCancelTrip**](TripsApi.md#tripscontrollercanceltrip) | **POST** /driver/trips/{id}/cancel | 
-[**tripsControllerCompleteTrip**](TripsApi.md#tripscontrollercompletetrip) | **POST** /driver/trips/{id}/complete | 
-[**tripsControllerGetTrip**](TripsApi.md#tripscontrollergettrip) | **GET** /driver/trips/{id} | 
-[**tripsControllerGetTrips**](TripsApi.md#tripscontrollergettrips) | **GET** /driver/trips | 
-[**tripsControllerRejectTrip**](TripsApi.md#tripscontrollerrejecttrip) | **POST** /driver/trips/{id}/reject | 
+[**tripsControllerAcceptTrip**](TripsApi.md#tripscontrolleraccepttrip) | **POST** /trips/{id}/accept | 
+[**tripsControllerArriveTrip**](TripsApi.md#tripscontrollerarrivetrip) | **POST** /trips/{id}/arrive | 
+[**tripsControllerCancelTrip**](TripsApi.md#tripscontrollercanceltrip) | **POST** /trips/{id}/cancel | 
+[**tripsControllerCompleteTrip**](TripsApi.md#tripscontrollercompletetrip) | **POST** /trips/{id}/complete | 
+[**tripsControllerGetTrip**](TripsApi.md#tripscontrollergettrip) | **GET** /trips/{id} | 
+[**tripsControllerGetTrips**](TripsApi.md#tripscontrollergettrips) | **GET** /trips | 
+[**tripsControllerRejectTrip**](TripsApi.md#tripscontrollerrejecttrip) | **POST** /trips/{id}/reject | 
 
 
 # **tripsControllerAcceptTrip**

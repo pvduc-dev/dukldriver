@@ -9,8 +9,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**driversControllerUpdateDriverLocation**](DriversApi.md#driverscontrollerupdatedriverlocation) | **PUT** /driver/drivers/location | 
-[**driversControllerUpdateDriverStatus**](DriversApi.md#driverscontrollerupdatedriverstatus) | **PUT** /driver/drivers/status | 
+[**driversControllerUpdateDriverLocation**](DriversApi.md#driverscontrollerupdatedriverlocation) | **PUT** /drivers/location | 
+[**driversControllerUpdateDriverStatus**](DriversApi.md#driverscontrollerupdatedriverstatus) | **PUT** /drivers/status | 
 
 
 # **driversControllerUpdateDriverLocation**

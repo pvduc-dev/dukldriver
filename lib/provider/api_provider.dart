@@ -9,7 +9,7 @@ class ApiProvider {
     BaseOptions(
       baseUrl: String.fromEnvironment(
         'API_URL',
-        defaultValue: 'http://192.168.31.98:3111',
+        defaultValue: 'http://192.168.31.98:7111',
       ),
       connectTimeout: const Duration(milliseconds: 5000),
       receiveTimeout: const Duration(milliseconds: 3000),
@@ -61,6 +61,13 @@ class ApiProvider {
                 errorMessage = 'Không thể kết nối đến máy chủ';
                 break;
               case DioExceptionType.badResponse:
+                if (error.response?.statusCode == 401) {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/phone',
+                    (route) => false,
+                  );
+                }
                 errorMessage =
                     error.response?.data['message'] ?? 'Lỗi không xác định';
                 break;

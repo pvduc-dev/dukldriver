@@ -38,13 +38,14 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  login(String phone, String otpCode) async {
+  login(String phone, String otpCode, BuildContext context) async {
     final response = await context
         .read<ApiProvider>()
         .api
         .getAuthApi()
         .authControllerLogin(
           loginRequestDto: LoginRequestDto(phone: phone, otpCode: otpCode),
+          extra: {'isLoading': true, 'context': context},
         );
     if (response.data != null) {
       String authToken = response.data!.token;

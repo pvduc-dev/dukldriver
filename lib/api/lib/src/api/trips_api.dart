@@ -40,7 +40,7 @@ class TripsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/trips/{id}/accept'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/trips/{id}/accept'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -117,7 +117,7 @@ _responseData = rawData == null ? null : deserialize<Trip, Trip>(rawData, 'Trip'
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/trips/{id}/arrive'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/trips/{id}/arrive'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -194,7 +194,7 @@ _responseData = rawData == null ? null : deserialize<Trip, Trip>(rawData, 'Trip'
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/trips/{id}/cancel'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/trips/{id}/cancel'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -271,7 +271,7 @@ _responseData = rawData == null ? null : deserialize<Trip, Trip>(rawData, 'Trip'
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/trips/{id}/complete'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/trips/{id}/complete'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -348,7 +348,7 @@ _responseData = rawData == null ? null : deserialize<Trip, Trip>(rawData, 'Trip'
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/trips/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/trips/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -425,7 +425,7 @@ _responseData = rawData == null ? null : deserialize<Trip, Trip>(rawData, 'Trip'
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/trips';
+    final _path = r'/trips';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -507,7 +507,7 @@ _responseData = rawData == null ? null : deserialize<List<Trip>, Trip>(rawData, 
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/driver/trips/{id}/reject'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/trips/{id}/reject'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{

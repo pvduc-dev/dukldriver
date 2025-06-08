@@ -99,7 +99,7 @@ Future<void> sendLocationToBackend(
         headers: {'Authorization': 'Bearer $token'},
         baseUrl: String.fromEnvironment(
           'API_URL',
-          defaultValue: 'http://192.168.31.98:3111',
+          defaultValue: 'http://192.168.31.98:7111',
         ),
       ),
     ),

@@ -18,6 +18,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
     final api = Provider.of<ApiProvider>(context, listen: false).api;
     await api.getAuthApi().authControllerRequestOtp(
       requestOtpRequestDto: RequestOtpRequestDto(phone: phone),
+      extra: {'isLoading': true, 'context': context},
     );
     if (!context.mounted) return;
     Navigator.pushReplacementNamed(context, '/otp', arguments: phone);
@@ -62,14 +63,16 @@ class _PhoneScreenState extends State<PhoneScreen> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).colorScheme.primary,
-                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
                     onPressed: () {
                       _onContinue(context);
                     },
                     child: const Text(
                       'Tiếp tục',
-                      style: TextStyle(fontSize: 17),
+                      style: TextStyle(fontSize: 17, color: Colors.white),
                     ), // Tăng kích thước chữ
                   ),
                 ),

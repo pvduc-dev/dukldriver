@@ -15,7 +15,7 @@ class _OtpScreenState extends State<OtpScreen> {
   _onContinue(BuildContext context) async {
     final phone = ModalRoute.of(context)!.settings.arguments as String;
     final otpCode = _otpController.text;
-    await context.read<AuthProvider>().login(phone, otpCode);
+    await context.read<AuthProvider>().login(phone, otpCode, context);
 
     if (context.mounted) {
       Navigator.pushReplacementNamed(context, '/');
