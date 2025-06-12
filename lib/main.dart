@@ -5,7 +5,6 @@ import 'package:dukldriver/api/lib/openapi.dart';
 import 'package:dukldriver/provider/api_provider.dart';
 import 'package:dukldriver/provider/auth_provider.dart';
 import 'package:dukldriver/screens/detail_trip_screen.dart';
-import 'package:dukldriver/screens/incoming_trip_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flashy_flushbar/flashy_flushbar_provider.dart';
 import 'package:flutter/material.dart';

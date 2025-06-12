@@ -12,6 +12,11 @@ void main() {
       // TODO
     });
 
+    //Future<Trip> tripsControllerArriveTrip(String id) async
+    test('test tripsControllerArriveTrip', () async {
+      // TODO
+    });
+
     //Future<Trip> tripsControllerCancelTrip(String id) async
     test('test tripsControllerCancelTrip', () async {
       // TODO

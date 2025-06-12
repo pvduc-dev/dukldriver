@@ -12,8 +12,8 @@ void main() {
       // TODO
     });
 
-    // String id
-    test('to test the property `id`', () async {
+    // Driver user
+    test('to test the property `user`', () async {
       // TODO
     });
 

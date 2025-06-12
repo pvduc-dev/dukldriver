@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/driver.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_response_dto.g.dart';
@@ -20,7 +21,7 @@ class LoginResponseDto {
 
     required  this.token,
 
-    required  this.id,
+    required  this.user,
   });
 
   @JsonKey(
@@ -37,13 +38,13 @@ class LoginResponseDto {
 
   @JsonKey(
     
-    name: r'id',
+    name: r'user',
     required: true,
     includeIfNull: false,
   )
 
 
-  final String id;
+  final Driver user;
 
 
 
@@ -52,12 +53,12 @@ class LoginResponseDto {
     @override
     bool operator ==(Object other) => identical(this, other) || other is LoginResponseDto &&
       other.token == token &&
-      other.id == id;
+      other.user == user;
 
     @override
     int get hashCode =>
         token.hashCode +
-        id.hashCode;
+        user.hashCode;
 
   factory LoginResponseDto.fromJson(Map<String, dynamic> json) => _$LoginResponseDtoFromJson(json);
 

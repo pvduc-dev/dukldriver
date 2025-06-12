@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 README.md
 analysis_options.yaml
 build.yaml
@@ -39,3 +40,17 @@ lib/src/model/trip.dart
 lib/src/model/update_device_token_request_dto.dart
 lib/src/model/update_status_dto.dart
 pubspec.yaml
+test/address_test.dart
+test/auth_api_test.dart
+test/driver_test.dart
+test/drivers_api_test.dart
+test/location_test.dart
+test/login_request_dto_test.dart
+test/login_response_dto_test.dart
+test/path_test.dart
+test/request_otp_request_dto_test.dart
+test/request_otp_response_dto_test.dart
+test/trip_test.dart
+test/trips_api_test.dart
+test/update_device_token_request_dto_test.dart
+test/update_status_dto_test.dart
