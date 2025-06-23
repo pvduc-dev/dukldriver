@@ -1,4 +1,5 @@
 import 'package:openapi/src/model/address.dart';
+import 'package:openapi/src/model/customer.dart';
 import 'package:openapi/src/model/driver.dart';
 import 'package:openapi/src/model/location.dart';
 import 'package:openapi/src/model/login_request_dto.dart';
@@ -30,6 +31,8 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return (value is double ? value : double.parse('$value')) as ReturnType;
         case 'Address':
           return Address.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Customer':
+          return Customer.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'Driver':
           return Driver.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'Location':

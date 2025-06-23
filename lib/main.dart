@@ -77,7 +77,7 @@ void onStart(ServiceInstance service) async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('auth_token');
     if (token != null) {
-      await sendLocationToBackend(position.latitude, position.longitude, token);
+      // await sendLocationToBackend(position.latitude, position.longitude, token);
     }
   });
 }

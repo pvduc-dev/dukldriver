@@ -12,7 +12,9 @@ Path _$PathFromJson(Map<String, dynamic> json) =>
         type: $checkedConvert('type', (v) => v as String?),
         coordinates: $checkedConvert(
           'coordinates',
-          (v) => (v as List<dynamic>?)?.map((e) => e as num).toList(),
+          (v) => (v as List<dynamic>?)
+              ?.map((e) => (e as List<dynamic>).map((e) => e as num).toList())
+              .toList(),
         ),
       );
       return val;

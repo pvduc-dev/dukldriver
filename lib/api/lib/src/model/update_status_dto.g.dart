@@ -8,12 +8,30 @@ part of 'update_status_dto.dart';
 
 UpdateStatusDto _$UpdateStatusDtoFromJson(Map<String, dynamic> json) =>
     $checkedCreate('UpdateStatusDto', json, ($checkedConvert) {
-      $checkKeys(json, requiredKeys: const ['isAvailable']);
       final val = UpdateStatusDto(
-        isAvailable: $checkedConvert('isAvailable', (v) => v as bool),
+        status: $checkedConvert(
+          'status',
+          (v) => $enumDecodeNullable(_$UpdateStatusDtoStatusEnumEnumMap, v),
+        ),
+        latestLocation: $checkedConvert(
+          'latestLocation',
+          (v) =>
+              v == null ? null : Location.fromJson(v as Map<String, dynamic>),
+        ),
       );
       return val;
     });
 
 Map<String, dynamic> _$UpdateStatusDtoToJson(UpdateStatusDto instance) =>
-    <String, dynamic>{'isAvailable': instance.isAvailable};
+    <String, dynamic>{
+      if (_$UpdateStatusDtoStatusEnumEnumMap[instance.status] case final value?)
+        'status': value,
+      if (instance.latestLocation?.toJson() case final value?)
+        'latestLocation': value,
+    };
+
+const _$UpdateStatusDtoStatusEnumEnumMap = {
+  UpdateStatusDtoStatusEnum.offline: 'offline',
+  UpdateStatusDtoStatusEnum.online: 'online',
+  UpdateStatusDtoStatusEnum.onTrip: 'on_trip',
+};

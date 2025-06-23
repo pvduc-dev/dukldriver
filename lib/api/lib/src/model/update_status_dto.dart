@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/location.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'update_status_dto.g.dart';
@@ -18,18 +19,32 @@ class UpdateStatusDto {
   /// Returns a new [UpdateStatusDto] instance.
   UpdateStatusDto({
 
-    required  this.isAvailable,
+     this.status,
+
+     this.latestLocation,
   });
 
   @JsonKey(
     
-    name: r'isAvailable',
-    required: true,
+    name: r'status',
+    required: false,
     includeIfNull: false,
   )
 
 
-  final bool isAvailable;
+  final UpdateStatusDtoStatusEnum? status;
+
+
+
+  @JsonKey(
+    
+    name: r'latestLocation',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final Location? latestLocation;
 
 
 
@@ -37,11 +52,13 @@ class UpdateStatusDto {
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is UpdateStatusDto &&
-      other.isAvailable == isAvailable;
+      other.status == status &&
+      other.latestLocation == latestLocation;
 
     @override
     int get hashCode =>
-        isAvailable.hashCode;
+        status.hashCode +
+        latestLocation.hashCode;
 
   factory UpdateStatusDto.fromJson(Map<String, dynamic> json) => _$UpdateStatusDtoFromJson(json);
 
@@ -53,4 +70,22 @@ class UpdateStatusDto {
   }
 
 }
+
+
+enum UpdateStatusDtoStatusEnum {
+@JsonValue(r'offline')
+offline(r'offline'),
+@JsonValue(r'online')
+online(r'online'),
+@JsonValue(r'on_trip')
+onTrip(r'on_trip');
+
+const UpdateStatusDtoStatusEnum(this.value);
+
+final String value;
+
+@override
+String toString() => value;
+}
+
 

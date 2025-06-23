@@ -79,11 +79,13 @@ Class | Method | HTTP request | Description
 [*TripsApi*](doc/TripsApi.md) | [**tripsControllerGetTrip**](doc/TripsApi.md#tripscontrollergettrip) | **GET** /trips/{id} | 
 [*TripsApi*](doc/TripsApi.md) | [**tripsControllerGetTrips**](doc/TripsApi.md#tripscontrollergettrips) | **GET** /trips | 
 [*TripsApi*](doc/TripsApi.md) | [**tripsControllerRejectTrip**](doc/TripsApi.md#tripscontrollerrejecttrip) | **POST** /trips/{id}/reject | 
+[*TripsApi*](doc/TripsApi.md) | [**tripsControllerStartTrip**](doc/TripsApi.md#tripscontrollerstarttrip) | **POST** /trips/{id}/start | 
 
 
 ## Documentation For Models
 
  - [Address](doc/Address.md)
+ - [Customer](doc/Customer.md)
  - [Driver](doc/Driver.md)
  - [Location](doc/Location.md)
  - [LoginRequestDto](doc/LoginRequestDto.md)

@@ -9,12 +9,13 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
-**customerId** | **String** |  | [optional] 
-**driverId** | **String** |  | [optional] 
+**customer** | [**Customer**](Customer.md) |  | [optional] 
+**driver** | [**Driver**](Driver.md) |  | [optional] 
 **pickup** | [**Address**](Address.md) |  | [optional] 
 **dropoff** | [**Address**](Address.md) |  | [optional] 
 **startedAt** | [**DateTime**](DateTime.md) |  | [optional] 
 **completedAt** | [**DateTime**](DateTime.md) |  | [optional] 
+**status** | **String** |  | [optional] 
 **note** | **String** |  | [optional] 
 **price** | **num** |  | [optional] 
 **distance** | **num** |  | [optional] 

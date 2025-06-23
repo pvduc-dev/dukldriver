@@ -16,10 +16,11 @@ Method | HTTP request | Description
 [**tripsControllerGetTrip**](TripsApi.md#tripscontrollergettrip) | **GET** /trips/{id} | 
 [**tripsControllerGetTrips**](TripsApi.md#tripscontrollergettrips) | **GET** /trips | 
 [**tripsControllerRejectTrip**](TripsApi.md#tripscontrollerrejecttrip) | **POST** /trips/{id}/reject | 
+[**tripsControllerStartTrip**](TripsApi.md#tripscontrollerstarttrip) | **POST** /trips/{id}/start | 
 
 
 # **tripsControllerAcceptTrip**
-> Trip tripsControllerAcceptTrip(id)
+> tripsControllerAcceptTrip(id)
 
 
 
@@ -31,8 +32,7 @@ final api = Openapi().getTripsApi();
 final String id = id_example; // String | 
 
 try {
-    final response = api.tripsControllerAcceptTrip(id);
-    print(response);
+    api.tripsControllerAcceptTrip(id);
 } catch on DioException (e) {
     print('Exception when calling TripsApi->tripsControllerAcceptTrip: $e\n');
 }
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Trip**](Trip.md)
+void (empty response body)
 
 ### Authorization
 
@@ -55,12 +55,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tripsControllerArriveTrip**
-> Trip tripsControllerArriveTrip(id)
+> tripsControllerArriveTrip(id)
 
 
 
@@ -72,8 +72,7 @@ final api = Openapi().getTripsApi();
 final String id = id_example; // String | 
 
 try {
-    final response = api.tripsControllerArriveTrip(id);
-    print(response);
+    api.tripsControllerArriveTrip(id);
 } catch on DioException (e) {
     print('Exception when calling TripsApi->tripsControllerArriveTrip: $e\n');
 }
@@ -87,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Trip**](Trip.md)
+void (empty response body)
 
 ### Authorization
 
@@ -96,12 +95,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tripsControllerCancelTrip**
-> Trip tripsControllerCancelTrip(id)
+> tripsControllerCancelTrip(id)
 
 
 
@@ -113,8 +112,7 @@ final api = Openapi().getTripsApi();
 final String id = id_example; // String | 
 
 try {
-    final response = api.tripsControllerCancelTrip(id);
-    print(response);
+    api.tripsControllerCancelTrip(id);
 } catch on DioException (e) {
     print('Exception when calling TripsApi->tripsControllerCancelTrip: $e\n');
 }
@@ -128,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Trip**](Trip.md)
+void (empty response body)
 
 ### Authorization
 
@@ -137,12 +135,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tripsControllerCompleteTrip**
-> Trip tripsControllerCompleteTrip(id)
+> tripsControllerCompleteTrip(id)
 
 
 
@@ -154,8 +152,7 @@ final api = Openapi().getTripsApi();
 final String id = id_example; // String | 
 
 try {
-    final response = api.tripsControllerCompleteTrip(id);
-    print(response);
+    api.tripsControllerCompleteTrip(id);
 } catch on DioException (e) {
     print('Exception when calling TripsApi->tripsControllerCompleteTrip: $e\n');
 }
@@ -169,7 +166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Trip**](Trip.md)
+void (empty response body)
 
 ### Authorization
 
@@ -178,7 +175,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -265,7 +262,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tripsControllerRejectTrip**
-> Trip tripsControllerRejectTrip(id)
+> tripsControllerRejectTrip(id)
 
 
 
@@ -277,8 +274,7 @@ final api = Openapi().getTripsApi();
 final String id = id_example; // String | 
 
 try {
-    final response = api.tripsControllerRejectTrip(id);
-    print(response);
+    api.tripsControllerRejectTrip(id);
 } catch on DioException (e) {
     print('Exception when calling TripsApi->tripsControllerRejectTrip: $e\n');
 }
@@ -292,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Trip**](Trip.md)
+void (empty response body)
 
 ### Authorization
 
@@ -301,7 +297,47 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tripsControllerStartTrip**
+> tripsControllerStartTrip(id)
+
+
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+
+final api = Openapi().getTripsApi();
+final String id = id_example; // String | 
+
+try {
+    api.tripsControllerStartTrip(id);
+} catch on DioException (e) {
+    print('Exception when calling TripsApi->tripsControllerStartTrip: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

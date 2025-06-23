@@ -43,7 +43,7 @@ class Path {
   )
 
 
-  final List<num>? coordinates;
+  final List<List<num>>? coordinates;
 
 
 

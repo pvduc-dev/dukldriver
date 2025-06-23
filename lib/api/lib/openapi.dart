@@ -14,6 +14,7 @@ export 'package:openapi/src/api/drivers_api.dart';
 export 'package:openapi/src/api/trips_api.dart';
 
 export 'package:openapi/src/model/address.dart';
+export 'package:openapi/src/model/customer.dart';
 export 'package:openapi/src/model/driver.dart';
 export 'package:openapi/src/model/location.dart';
 export 'package:openapi/src/model/login_request_dto.dart';

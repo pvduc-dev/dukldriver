@@ -21,13 +21,15 @@ class Driver {
 
      this.id,
 
-     this.fullName,
+     this.name,
 
      this.phone,
 
-     this.location,
+     this.status,
 
-     this.isAvailable,
+     this.latestLocation,
+
+     this.latestUpdate,
   });
 
   @JsonKey(
@@ -44,13 +46,13 @@ class Driver {
 
   @JsonKey(
     
-    name: r'fullName',
+    name: r'name',
     required: false,
     includeIfNull: false,
   )
 
 
-  final String? fullName;
+  final String? name;
 
 
 
@@ -68,25 +70,37 @@ class Driver {
 
   @JsonKey(
     
-    name: r'location',
+    name: r'status',
     required: false,
     includeIfNull: false,
   )
 
 
-  final Location? location;
+  final DriverStatusEnum? status;
 
 
 
   @JsonKey(
     
-    name: r'isAvailable',
+    name: r'latestLocation',
     required: false,
     includeIfNull: false,
   )
 
 
-  final bool? isAvailable;
+  final Location? latestLocation;
+
+
+
+  @JsonKey(
+    
+    name: r'latestUpdate',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? latestUpdate;
 
 
 
@@ -95,18 +109,20 @@ class Driver {
     @override
     bool operator ==(Object other) => identical(this, other) || other is Driver &&
       other.id == id &&
-      other.fullName == fullName &&
+      other.name == name &&
       other.phone == phone &&
-      other.location == location &&
-      other.isAvailable == isAvailable;
+      other.status == status &&
+      other.latestLocation == latestLocation &&
+      other.latestUpdate == latestUpdate;
 
     @override
     int get hashCode =>
         id.hashCode +
-        fullName.hashCode +
+        name.hashCode +
         phone.hashCode +
-        location.hashCode +
-        isAvailable.hashCode;
+        status.hashCode +
+        latestLocation.hashCode +
+        latestUpdate.hashCode;
 
   factory Driver.fromJson(Map<String, dynamic> json) => _$DriverFromJson(json);
 
@@ -118,4 +134,22 @@ class Driver {
   }
 
 }
+
+
+enum DriverStatusEnum {
+@JsonValue(r'offline')
+offline(r'offline'),
+@JsonValue(r'online')
+online(r'online'),
+@JsonValue(r'on_trip')
+onTrip(r'on_trip');
+
+const DriverStatusEnum(this.value);
+
+final String value;
+
+@override
+String toString() => value;
+}
+
 
